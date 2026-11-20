@@ -26,7 +26,7 @@ public class Vehicle extends Asset{
         else if(carAge < 7) {
             rate = new BigDecimal("0.06");
         }
-        else if(carAge < 10) {
+        else if(carAge <= 10) {
             rate =  new BigDecimal("0.08");
         }
 

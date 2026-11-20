@@ -13,10 +13,11 @@ public class Main {
         House house = new House("Studio", "2021-01-01", 500_000, "200 Ozone Park", 3, 500, 0);
         assets.add(house);
 
-        assets.add(new Sailboat("36cc", "2026-01-01", 100_000));
+        assets.add(new Sailboat("36cc", "2026-01-01", 100_000, 10_000));
 
         BigDecimal netWorth = BigDecimal.ZERO;
         BigDecimal vehicleTotal = BigDecimal.ZERO;
+        int totalEngineHours = 0;
 
         for ( Asset a : assets) {
             netWorth = netWorth.add(a.getValue());
@@ -24,11 +25,16 @@ public class Main {
             if (a instanceof Vehicle) {
                 vehicleTotal = vehicleTotal.add(a.getValue());
             }
+
+            if (a instanceof Sailboat) {
+                Sailboat sailboat = (Sailboat) a;
+                totalEngineHours += sailboat.getEngineHours();
+            }
         }
 
         System.out.println("Total value: " + netWorth);
         System.out.println("Vehicle subtotal: " + vehicleTotal);
-
+        System.out.println("Total engine hours: " + totalEngineHours);
 
     }
 }
